@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>智慧云店·数据平台</title>
+
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
+		<style type="text/css">
+			$ {
+				demo.css
+			}
+		</style>
+		<script src="js/common.js"></script>
+		<script src="js/barChartFlow.js"></script>
+		<script src="js/barChartSex.js"></script>
+		<script src="js/lineChart.js"></script>
+		<script src="js/pieChart.js"></script>
+		<script src="js/peopleFlowSrc.js"></script>
+		<script src="js/clickRate.js"></script>
+		<script>
+			$(function() {
+				if (!$.cookie(PARTNER_NO_KEY) || $.cookie(PARTNER_NO_KEY) == "" || $.cookie(PARTNER_NO_KEY) == "null") {
+					alert("您的登录已超时, 请点确定后重新登录!");
+					document.location.href = "./index.html";
+					//					location.href = "./index.html";
+				}
+			});
+		</script>
+	</head>
+
+	<body>
+		<script src="js/highcharts.js"></script>
+		<!--<script src="js/exporting.js"></script>-->
+		<div class="header">
+			<div class="left">智慧云店&nbsp;|&nbsp;数据平台
+			</div>
+			<div class="userbar">
+				<ul class="a-list">
+					<li>
+						<a href="#" id="home">返回首页</a>
+					</li>
+					<li><a href="./index.html" id="logout">退出</a></li>
+				</ul>
+			</div>
+
+			<!--<a class="right" href="#">返回首页</a>-->
+		</div>
+		<div id="main">
+			<div id="introduce">
+				<div>*&nbsp;每月为商铺提供店铺大数据分析，辅助经营</div>
+			</div>
+			<div class="subtitle">
+				用户性别
+			</div>
+			<div class="time-filter" datatype="user_sex_count" id="user_sex_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_sex" class="div-container"></div>
+			<div class="subtitle">
+				店铺客流量统计
+			</div>
+			<div class="time-filter" datatype="user_time_range_count" id="user_time_range_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_line" class="div-container"></div>
+			<div class="subtitle">
+				顾客停留时长
+			</div>
+			<div class="time-filter" datatype="user_stay_time_count" id="user_stay_time_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_pie" class="div-container"></div>
+			<div class="subtitle">
+				广告点击率
+			</div>
+			<div class="time-filter" datatype="ad_click_count" id="ad_click_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_ad_click" class="ad-click">
+				<div>
+					<p class="ad-title">广告展示次数</p>
+					<p class="ad-value" id="ad_show_count">15826</p>
+				</div>
+				<span class="line"></span>
+				<div>
+					<p class="ad-title">广告点击次数</p>
+					<p class="ad-value" id="click_count">15826</p>
+				</div>
+				<span class="line"></span>
+				<div>
+					<p class="ad-title">广告转化率</p>
+					<p class="ad-value" id="ad_trans_rate">15826</p>
+				</div>
+
+			</div>
+			<div class="subtitle">
+				客流热力分布
+			</div>
+			<div class="time-filter" datatype="apartner_compete_count" id="apartner_compete_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_flow" class="div-container"></div>
+			<div class="subtitle">
+				客流来源
+			</div>
+			<div class="time-filter" datatype="user_source_count" id="user_source_count">
+				<div class="select-item" count_type="1">昨天</div>
+				<div count_type="7">最近7天</div>
+				<div count_type="30">最近30天</div>
+			</div>
+			<div id="container_table" class="div-container">
+				<table>
+					<tr id="table_tr">
+						<td>客户来源</td>
+						<td>人数</td>
+					</tr>
+				</table>
+			</div>
+			<div id="more">更多数据分析维度,敬请期待...</div>
+		</div>
+	</body>
+
+</html>

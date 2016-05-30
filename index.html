@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>登录</title>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/code.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
+		<style type="text/css">
+			.code {
+				/*background-image: url(code.jpg);*/
+				background-color: #F4F5F9;
+				font-style: italic;
+				font-size: 25px;
+				color: Red;
+				border: 0;
+				width: 100px;
+				text-align: right;
+				padding: 5px 0px;
+				letter-spacing: 3px;
+				font-weight: bolder;
+				margin-right: 10px;
+				float: right;
+				display: none;
+			}
+			
+			.unchanged {
+				border: 0;
+				display: none;
+			}
+		</style>
+		<script>
+			$(function() {
+				if ($.cookie(PARTNER_NO_KEY) && $.cookie(PARTNER_NO_KEY) != "null" && $.cookie(PARTNER_NO_KEY) != "") {
+					PARTNER_NO = $.cookie(PARTNER_NO_KEY);
+					location.href = "./cloudshop.html";
+				}
+				//生成验证码
+				createCode();
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="left">智慧云店&nbsp;|&nbsp;数据平台
+			</div>
+		</div>
+		<div id="login-form">
+			<form>
+				<p class="username-label">用户名</p>
+				<input type="text" class="user-name" name="username" id="username" />
+				<div class="notice" id="user-error">用户名有误</div>
+				<p class="password-label">密码
+					<input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" /></p>
+				<input type="password" class="pass-word" name="password" id="password" />
+				<div class="notice" id="pwd-error">密码有误</div>
+				<input class="logging" type="button" value="登录" id="loggin" />
+			</form>
+		</div>
+	</body>
+
+</html>
